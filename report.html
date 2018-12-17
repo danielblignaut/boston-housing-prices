@@ -13142,7 +13142,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Import libraries necessary for this project</span>
@@ -13214,23 +13214,28 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># TODO: Minimum price of the data</span>
-<span class="n">minimum_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+<span class="c1">#minimum_price = prices.min()</span>
+<span class="n">minimum_prices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
 
 <span class="c1"># TODO: Maximum price of the data</span>
-<span class="n">maximum_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="c1">#maximum_price = prices.max()</span>
+<span class="n">maximum_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
 
 <span class="c1"># TODO: Mean price of the data</span>
-<span class="n">mean_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="c1">#mean_price = prices.mean()</span>
+<span class="n">mean_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
 
 <span class="c1"># TODO: Median price of the data</span>
-<span class="n">median_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+<span class="c1">#median_price = prices.median()</span>
+<span class="n">median_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
 
 <span class="c1"># TODO: Standard deviation of prices of the data</span>
-<span class="n">std_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+<span class="c1">#std_price = prices.std()</span>
+<span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
 
 <span class="c1"># Show the calculated statistics</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Statistics for Boston housing dataset:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -13293,7 +13298,10 @@ Standard deviation of prices: $165340.27765266784
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer: </strong> No, if LSTAT were to increase; this would most likely decrease MEDV value.</p>
+<p><strong>Answer: </strong> 
+RM: RM is the number of rooms i the house. I would expect that the greater the number of rooms, the greater the value of the house (MEDV), therefore an RM value of 7 would have a higher MEDV value than a data point with the same LSTAT and PTRATIO but an RM value of 6. This means there's a positive correlation between RM and MEDV due to the fact that generally speaking, the more rooms there are in a house, the greater it's price.
+LSTAT: LSTAT is the perfentage of homeowners in the neighbourhood considered "lower class". I would expect that the higher the LSTAT value, all else equal the lower the MEDV value. Therefore a data point with LSTAT of 15 would be worth more (higher MEDV value) than the same data point with an LSTAT of 20 (but the SAME RM and PTRATIO). This implies a negative correlation to MEDV on the basis that it would be reasonable to assume that the higher the "lower class" percentage, the more unsafe the area may be or the less appropriate the area may be for children, decreasing the MEDV value.
+PTRATIO: PTRATIO is the ratio of students to teachers. The higher this ratio is, the more students there are per teacher which may lead to a less condusive environment for learning and vice versa. We may therefore expect there to be a negative correlation to MEDV as we may expect people to pay more to be in an area where their children have better learning prospects (a lower PTRATIO) and vice versage. Therefore homes with a PT ratio of 10 would have a higher MEDV value than those with a PTRATIO of 15, ceteris paribus</p>
 
 </div>
 </div>
@@ -13701,7 +13709,26 @@ Think about the pros and cons of adding more training points based on if the tra
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer: </strong> The grid Search technique is a technique used to achieve the goal of optimising the choice of multiple model hyperparameters (e.g. for an SVM model) to provide the highest scoring model. The technique entails creating a table with the y-value representing one parameter (e.g. soft margin constant) and another representing the x-value (e.g. kernel) and choosing random parameter values for each row / column that generall grow exponentials (i.e. 0.1, 1, 10, 100, 1000)</p>
+<p><strong>Answer: </strong> The grid Search technique is a technique used to achieve the goal of optimising the choice of multiple model hyperparameters (e.g. for an SVM model) to provide the highest scoring model. The technique entails creating a table with the y-value representing one parameter (e.g. soft margin constant) and another representing the x-value (e.g. kernel) and choosing random parameter values for each row / column that generally grows exponentialy (i.e. 0.1, 1, 10, 100, 1000) and specifying a performance metric to optimise based on.</p>
+<p>The gridsearch function takes a dictionary of parameters that you wish to optimise, each dictionary value being an array of parameter values you would like to test. It also takes a performance metric. A performance metric is the measurement tool by which we want to optimise the parameters based on (r^2, f1, fbeta). We also pass the model that we would like to optimise as a parameter so that the grid search knows: what function is it optimising; how is it measuring the optimisation process; what parameters within the model are we going to measure.</p>
+<p>A parameter is an internal configuration of the model and is calculated based on the training data suplied to it whereas a model hyperparameter is an external configuration value whose value can't be estimated from the training data and are often set when the model is being created. Thus we need to use some sort of method (e.g. gridsearch) as an intermediary step to try and assess what the optimal combination of hyper parameters may be.</p>
+<p>The grid signifies an exhaustive list of all combinations of the provided hyperparameter values that we want to optimise and therefore each cell in the grid is a different model of the same underlying classifier but with different hyper parameter values.</p>
+<p>The performance metric will change based on the type of model we're trying to optimise and thus can be configured as an input parameter, this is merely the measurement tool that gridsearch uses to evaluate the ouput when changing each of the hyper parameters.</p>
+<p>The grid search will loop through each cell in the table; use the cross-validation data set to get an output from each "cell / model" and then use the measurement tool / performance metric specified to choose the cell with the best hyper parameter configuration.</p>
+<p>For example, we may use a support vector machine model as a chosen model and the hyper parameters may be the kernal and soft margin constant. We may want to create the following dictionary:</p>
+<p>parameters = {'kernel':['poly', 'rbf'],'C':[0.1, 1, 10]}</p>
+<p>instead of using an r^2 scorer, we may opt to use an f1 scoring function instead:</p>
+<p>from sklearn.metrics import make_scorer
+from sklearn.metrics import f1_score</p>
+<p>scorer = make_scorer(f1_score)</p>
+<p>we would then create our grid search object:</p>
+<p>grid_obj = GridSearchCV(clf, parameters, scoring=scorer)</p>
+<p>we then fit the cross-validation data set:</p>
+<p>grid_fit = grid_obj.fit(X, y)</p>
+<p>^ the fit function takes in the CV data and loops through each cell / model producing an output which it then uses the f1 scoring function to measure the models output.</p>
+<p>and get the best classifier:</p>
+<p>best_clf = grid_fit.best<em>estimator</em></p>
+<p>^ the "best<em>estimator</em>" is the model that returns the best score from the f1 scoring function</p>
 
 </div>
 </div>
@@ -14045,13 +14072,36 @@ Client 2's house value is the lowest of the 3, $227,481.08. In comparison the da
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">vs</span><span class="o">.</span><span class="n">PredictTrials</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">prices</span><span class="p">,</span> <span class="n">fit_model</span><span class="p">,</span> <span class="n">client_data</span><span class="p">)</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-1-df235a0b12ac&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>vs<span class="ansi-blue-fg">.</span>PredictTrials<span class="ansi-blue-fg">(</span>features<span class="ansi-blue-fg">,</span> prices<span class="ansi-blue-fg">,</span> fit_model<span class="ansi-blue-fg">,</span> client_data<span class="ansi-blue-fg">)</span>
+
+<span class="ansi-red-fg">NameError</span>: name &#39;vs&#39; is not defined</pre>
+</div>
+</div>
+
 </div>
 </div>
 
